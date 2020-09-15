@@ -4,9 +4,10 @@ const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 var Ball;
+var dustbin;
 function preload()
 {
-	
+ dustbin= loadImage("dustbinimg25.png");	
 }
 
 function setup() {
@@ -30,14 +31,17 @@ function setup() {
 	boxPosition=width/2+200
  	boxY=610;
 
-	boxBase=createSprite(boxPosition, boxY+40, 200,10);
-	boxBase.shapeColor=color(255);
+	boxBase=createSprite(boxPosition, boxY-20, 200,10);
+	boxBase.addImage(dustbin);
+	boxBase.scale= 0.7;
+	//boxBase.shapeColor=color(255);
 	 
 	boxBottomBody = Bodies.rectangle(boxPosition, boxY+45-20, 200,20 , {isStatic:true} );
  	World.add(world, boxBottomBody);
 
 	boxLeftSprite=createSprite(boxPosition+100, boxY-5, 10,100);
- 	boxLeftSprite.shapeColor=color(255);
+	 boxLeftSprite.shapeColor=color(255);
+	 boxLeftSprite.visible=false;
 
 
 	boxLeftBody = Bodies.rectangle(boxPosition+100, boxY-5, 10,100 , {isStatic:true} );
@@ -45,7 +49,8 @@ function setup() {
 
 	boxRightSprite=createSprite(boxPosition-100 , boxY-5, 10,100);
  	boxRightSprite.shapeColor=color(255);
-	
+	boxRightSprite.visible=false
+
 	boxRightBody = Bodies.rectangle(boxPosition-100 , boxY-5, 10,100 , {isStatic:true} );
  	World.add(world, boxRightBody);
 
@@ -57,7 +62,7 @@ function setup() {
 
 function draw() {
 
-  background(0);
+  background("skyblue");
 
   rectMode(CENTER);
   

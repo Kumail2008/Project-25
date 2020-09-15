@@ -5,7 +5,7 @@ class Paper {
   this.x= x;
   this.y = y;
   this.r =r;
-
+  this.image = loadImage("paperimg25.png");
   var options = {
     isStatic : false,
     restitution: 0.3,
@@ -13,7 +13,7 @@ class Paper {
      density : 3,
     }
   this.body= Bodies.circle(x, y, r/2, options);
-  this.image = loadImage("kumail24correction-master/paperimg25.png");
+
   World.add(world, this.body);
 }
 
@@ -24,8 +24,8 @@ display(){
   imageMode(CENTER);
   stroke("brown");
   strokeWeight(4);
-  fill(255);
-  image(this.image,pos.x,pos.y,this.r);
+  fill("white");
+  image(this.image,0,0,this.r);
   pop();
 }
 };
